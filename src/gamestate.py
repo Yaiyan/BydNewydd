@@ -1,6 +1,8 @@
 import pygame
 import sys
 
+import resources as R
+
 class GameState:
     def __init__(self):
         pass
