@@ -2,10 +2,11 @@ import pygame
 import sys
 
 import resources as R
+from world import World
 
 class GameState:
     def __init__(self):
-        pass
+        self.world = World() 
 
     def check_events(self, events):
         for i in events:
