@@ -6,7 +6,7 @@ from world import World
 
 class GameState:
     def __init__(self):
-        self.world = World() 
+        self.world = World(5) 
 
     def check_events(self, events):
         for i in events:
@@ -17,7 +17,8 @@ class GameState:
                     sys.exit(0)
 
     def blit(self, surface):
-        pygame.draw.rect(surface, (255,255,255), (100,100,5,10))
+        self.world.blit(surface)
 
     def tick(self):
         pass
+
