@@ -16,3 +16,7 @@ def load_images():
 
 IMAGES = load_images()
 TILESIZE = 40
+
+RESOLUTION = (960,540) #Internal resolution
+SCALE = 2
+

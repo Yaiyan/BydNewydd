@@ -1,9 +1,8 @@
+import resources as r
+
 import pygame
 
 from gamestate import GameState
-
-RESOLUTION = (960,540) #Internal resolution
-SCALE = 2
 
 class Main:
     def __init__(self):
@@ -21,16 +20,17 @@ class Main:
         self.states[self.current_state].tick()
 
     def blit(self, draw_surface, surface):
+        draw_surface.fill((0,0,0))
+
         self.states[self.current_state].blit(draw_surface)
         
-        surface.fill((0,0,0))
-        surface.blit(pygame.transform.scale(draw_surface, (RESOLUTION[0]*SCALE, RESOLUTION[1]*SCALE)), (0,0))
+        surface.blit(pygame.transform.scale(draw_surface, (r.RESOLUTION[0]*r.SCALE, r.RESOLUTION[1]*r.SCALE)), (0,0))
 
         pygame.display.flip()
     
     def run(self):
-        draw_surface = pygame.Surface(RESOLUTION)
-        surface = pygame.display.set_mode((RESOLUTION[0]*SCALE, RESOLUTION[1]*SCALE))
+        draw_surface = pygame.Surface(r.RESOLUTION)
+        surface = pygame.display.set_mode((r.RESOLUTION[0]*r.SCALE, r.RESOLUTION[1]*r.SCALE))
 
         while True:
             self.check_events()
