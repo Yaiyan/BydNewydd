@@ -1,16 +1,26 @@
+import resources as r
+
 import pygame
 
 class GameTile:
-    def __init__(self):
-        pass
+    def __init__(self, colour=(103, 187, 76)):
+        self.colour = colour
 
     def blit(self):
-        surface = pygame.Surface((20,20))
+        surface = pygame.Surface((r.TILESIZE,r.TILESIZE))
         pygame.draw.rect(surface,
-                         (103, 187, 76),
+                         self.colour,
                          (0,
                           0,
-                          20,
-                          20)
+                          r.TILESIZE,
+                          r.TILESIZE)
+                        )
+        pygame.draw.rect(surface,
+                         (0,0,0),
+                         (0,
+                          0,
+                          r.TILESIZE,
+                          r.TILESIZE),
+                         1
                         )
         return surface

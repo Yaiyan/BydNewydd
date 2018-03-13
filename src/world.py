@@ -1,5 +1,9 @@
 from gametile import GameTile
 
+import resources as r
+
+import pygame
+
 class World:
     def __init__(self, size):
         self.size = size
@@ -8,6 +12,10 @@ class World:
         self.bl = [[GameTile() for j in range(self.size)] for i in range(self.size)]
         self.tr = [[GameTile() for j in range(self.size)] for i in range(self.size)]
         self.br = [[GameTile() for j in range(self.size)] for i in range(self.size)]
+
+        ### Blit vars
+
+        self.surface = pygame.Surface((self.size*2*r.TILESIZE, self.size*2*r.TILESIZE))
     
     def get_tile(self, x, y):
         if y >= 0:
@@ -42,23 +50,31 @@ class World:
     ## Blit logic ##
     ################
 
-    def blit(self, surface):
+    def blit(self):
+        self.surface.fill((0,0,0))
+
         for x in range(-self.size,0):
             for y in range(-self.size,0):
-                surface.blit(self.get_tile(x,y).blit(), (self.size*20 + x*20,
-                                                         self.size*20 + y*20))
+                self.surface.blit(self.get_tile(x,y).blit(),
+                                  (self.size*r.TILESIZE + x*r.TILESIZE,
+                                   self.size*r.TILESIZE + y*r.TILESIZE))
         for x in range(self.size):
             for y in range(-self.size,0):
-                surface.blit(self.get_tile(x,y).blit(), (self.size*20 + x*20,
-                                                         self.size*20 + y*20))
+                self.surface.blit(self.get_tile(x,y).blit(),
+                                  (self.size*r.TILESIZE + x*r.TILESIZE,
+                                   self.size*r.TILESIZE + y*r.TILESIZE))
         for x in range(-self.size,0):
             for y in range(self.size):
-                surface.blit(self.get_tile(x,y).blit(), (self.size*20 + x*20,
-                                                         self.size*20 + y*20))
+                self.surface.blit(self.get_tile(x,y).blit(),
+                                  (self.size*r.TILESIZE + x*r.TILESIZE,
+                                   self.size*r.TILESIZE + y*r.TILESIZE))
         for x in range(self.size):
             for y in range(self.size):
-                surface.blit(self.get_tile(x,y).blit(), (self.size*20 + x*20,
-                                                         self.size*20 + y*20))
+                self.surface.blit(self.get_tile(x,y).blit(),
+                                  (self.size*r.TILESIZE + x*r.TILESIZE,
+                                   self.size*r.TILESIZE + y*r.TILESIZE))
+
+        return self.surface
 
     def display(self):
         for i in range(self.size-1,-1,-1):

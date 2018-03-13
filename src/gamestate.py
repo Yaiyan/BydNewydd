@@ -17,7 +17,7 @@ class GameState:
                     sys.exit(0)
 
     def blit(self, surface):
-        self.world.blit(surface)
+        surface.blit(self.world.blit(), (0,0))
 
     def tick(self):
         pass

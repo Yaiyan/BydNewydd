@@ -15,3 +15,4 @@ def load_images():
     return images
 
 IMAGES = load_images()
+TILESIZE = 40
