@@ -18,6 +18,8 @@ class GameState:
             if i.type == pygame.KEYDOWN:
                 if i.key == pygame.K_ESCAPE:
                     sys.exit(0)
+                if i.key == pygame.K_g:
+                    self.world.grow(1)
 
         if pygame.mouse.get_pos()[0] < 20*R.SCALE:
             self.wov[0] += 0.5
@@ -35,5 +37,5 @@ class GameState:
         self.wov[0] *= 0.8
         self.wov[1] *= 0.8
 
-        self.world_offset[0] += self.wov[0]
-        self.world_offset[1] += self.wov[1]
+        self.world_offset[0] += self.wov[0] * R.SCALE
+        self.world_offset[1] += self.wov[1] * R.SCALE

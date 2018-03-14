@@ -20,7 +20,7 @@ class Main:
         self.states[self.current_state].tick()
 
     def blit(self, draw_surface, surface):
-        draw_surface.fill((0,0,0))
+        draw_surface.fill((78,156,245))
 
         self.states[self.current_state].blit(draw_surface)
         

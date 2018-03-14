@@ -46,6 +46,8 @@ class World:
         self.tr.append([GameTile() for i in range(self.size)])
         self.br.append([GameTile() for i in range(self.size)])
 
+        self.surface = pygame.Surface((self.size*2*r.TILESIZE, self.size*2*r.TILESIZE))
+
     ################
     ## Blit logic ##
     ################

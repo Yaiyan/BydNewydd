@@ -3,7 +3,7 @@ import resources as r
 import pygame
 
 class GameTile:
-    def __init__(self, colour=(103, 187, 76)):
+    def __init__(self, colour=(87, 157, 46)):
         self.colour = colour
 
     def blit(self):
